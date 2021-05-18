@@ -1,5 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Bitter:wght@400;700;&family=Exo+2:wght@400;600;700&display=swap");
-
+@import url("https://fonts.googleapis.com/css2?family=Bitter:wght@400;800&family=Exo+2:wght@400;700&display=swap");
 * {
   box-sizing: border-box;
 }
@@ -11,7 +10,7 @@ $black22: #222222;
 $bright-black: #303030;
 $black1f: #1f1f1f;
 $grey: #444444;
-$footer-text: #BDBDBD;
+$footer-text: #bdbdbd;
 $status-bg: #55597d;
 $red: #c21010;
 $yellow: #eedb4d;
@@ -31,12 +30,6 @@ body {
   z-index: $zindex;
 }
 
-@mixin flex($direction, $justify, $align) {
-  display: flex;
-  flex-direction: $direction;
-  justify-content: $justify;
-  align-items: $align;
-}
 /*********** header styles **************/
 
 header {
@@ -70,7 +63,9 @@ header .logo {
   color: $primary-color;
   transform: translateX(-50%);
   @include position(absolute, 3);
-  @include flex(column, none, center);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .direction-text {
   text-transform: uppercase;
@@ -82,7 +77,9 @@ section {
   margin: 0 50px;
 }
 .op-text-box {
-  @include flex(column, none, center);
+  display: flex;
+  align-items: center;
+  flex-direction: column;
   height: 300px;
 }
 .op-text-box h1 {
@@ -100,7 +97,9 @@ section {
 }
 .projects-header {
   padding: 20px 0;
-  @include flex(none, space-between, center);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 ul {
   display: flex;
@@ -236,6 +235,9 @@ ul span {
   text-transform: uppercase;
   bottom: 10px;
 }
+.mobile-big-project {
+  display: none;
+}
 .border-bt {
   pointer-events: none;
   @include position(absolute, 2);
@@ -243,34 +245,28 @@ ul span {
   background-color: $primary-color;
   width: 40px;
   left: 0;
-  top: 26px;
+  bottom: -8px;
 }
 /**********section 2*************/
 .section-2 {
-  @include flex(none, none, center);
+  display: flex;
+  align-items: center;
   margin: 120px 50px;
-}
-.left-side {
-  flex: 1;
 }
 .right-side {
   position: relative;
   flex: 2;
-  @include flex(none, center, none);
-  .icon {
-    margin-right: 20px;
-  }
-  .icon-text {
-    font-size: 14px;
-    font-weight: 600;
-  }
+  display: flex;
+  justify-content: center;
   .left {
     margin-top: 50px;
   }
   .box {
     background-color: $secondary-color;
     width: 50%;
-    @include flex(column, space-between, none);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     padding: 50px;
     color: $primary-color;
     height: 450px;
@@ -279,13 +275,26 @@ ul span {
     margin-bottom: 50px;
   }
 }
+
+.icon {
+  margin-right: 20px;
+}
+.icon-text {
+  font-size: 14px;
+  font-weight: 600;
+}
+
 .flex {
-  @include flex(none, none, none);
+  display: flex;
+}
+.flex-mobile {
+  display: flex;
 }
 .snowy-effect {
   position: absolute;
 }
 .left-side {
+  flex: 1;
   margin-right: 30px;
   h1 {
     font-size: 54px;
@@ -298,196 +307,210 @@ ul span {
   }
 }
 /*************** section 3 ************/
+.px-50 {
+  padding: 0 50px;
+}
 .section-3 {
-  margin: 0 0 100px 0;
+  margin: 0;
   height: 350px;
   position: relative;
   display: flex;
+}
+.placeholder {
+  height: 100%;
+  position: absolute;
+  width: 100%;
+}
+.placeholder-shadow {
+  height: 100%;
+  width: 100%;
+  @include position(absolute, 3);
+  background-color: $black;
+  opacity: 0.6;
+}
+.contact-left {
+  flex: 0.6;
+  height: 100%;
+  padding-right: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  @include position(absolute, 4);
+  color: $primary-color;
+  p {
+    font-size: 14px;
+  }
+}
+.contact-right {
+  flex: 0.4;
+  @include position(absolute, 4);
+  right: 0;
+  top: -90px;
+}
 
-  .px-50 {
-    padding: 0 50px;
-  }
-  .placeholder {
-    height: 100%;
-    position: absolute;
-    width: 100%;
-  }
-  .placeholder-shadow {
-    height: 100%;
-    width: 100%;
-    @include position(absolute, 3);
-    background-color: $black;
-    opacity: 0.6;
-  }
-  .left {
-    flex: 0.6;
-    height: 100%;
-    @include flex(column, center, none);
-    @include position(absolute, 4);
-    color: $primary-color;
-    p {
-      font-size: 14px;
-    }
-  }
-  .right {
-    flex: 0.4;
-    @include position(absolute, 4);
-    right: 5%;
-    top: -90px;
-  }
-  h1 {
-    font-size: 54px;
-    font-family: "Bitter", sans-serif;
-    margin: 0;
-  }
-  input {
-    outline: none;
-    border: none;
-    padding: 12px 64px;
-    border-radius: 4px;
-    width: 25%;
-    margin-right: 10px;
-  }
+h1 {
+  font-size: 54px;
+  font-family: "Bitter", sans-serif;
+  margin: 0;
+}
+
+input {
+  outline: none;
+  border: none;
+  padding: 12px 64px;
+  border-radius: 4px;
+  width: 25%;
+  margin-right: 10px;
 }
 /**********section 4*************/
 .section-4 {
-  @include flex(column, none, center);
-  .pricing-box {
-    width: 100%;
-    height: 260px;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-gap: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.pricing-box {
+  width: 100%;
+  height: 260px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+  grid-gap: 16px;
+}
+.pricing {
+  width: 100%;
+  height: 250px;
+  background-color: $yellow;
+  position: relative;
+  img {
+    position: absolute;
+    z-index: 2;
   }
-  .pricing {
-    background-color: $yellow;
-    position: relative;
+  .text-box-2 {
+    margin-left: 20px;
+    color: $yellow;
+    display: flex;
+    div {
+      display: flex;
+      width: max-content;
+      position: relative;
+    }
+    h1 {
+      font-size: 116px;
+      margin: 0;
+    }
     img {
-      position: absolute;
-      z-index: 2;
+      left: 50%;
+      transform: translateX(-50%);
     }
-    .text-box-2 {
-      margin-left: 20px;
-      color: $yellow;
-      display: flex;
-      div {
-        display: flex;
-        width: max-content;
-        position: relative;
-      }
-      h1 {
-        font-size: 116px;
-        margin: 0;
-      }
-      img {
-        left: 50%;
-        transform: translateX(-50%);
-      }
-      span {
-        font-size: 48px;
-        margin: 0;
-      }
+    span {
+      font-size: 48px;
+      margin: 0;
     }
-    .pos-absolute {
-      position: absolute;
-      z-index: 1;
+  }
+  .pos-absolute {
+    position: absolute;
+    z-index: 1;
+  }
+  .pricing1-text {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    top: 0;
+    right: 0;
+    width: 75%;
+  }
+  .text-box {
+    background-color: $bright-black;
+    width: max-content;
+    color: $primary-color;
+    display: flex;
+    color: $yellow;
+    font-weight: 700;
+    padding-left: 40px;
+    h1 {
+      font-size: 54px;
+      margin: 0;
     }
-    .pricing1-text {
-      height: 100%;
-      @include flex(column, flex-end, none);
-      top: 0;
-      right: 0;
-      width: 75%;
+    .asterik {
+      margin: 0 5px 0 0;
+      font-size: 24px;
+      font-weight: 200;
     }
-    .text-box {
-      background-color: $bright-black;
-      width: max-content;
-      color: $primary-color;
-      display: flex;
-      color: $yellow;
-      font-weight: 700;
-      padding-left: 40px;
-      h1 {
-        font-size: 54px;
-        margin: 0;
-      }
-      .asterik {
-        margin: 0 5px 0 0;
-        font-size: 24px;
-        font-weight: 200;
-      }
+  }
+  .price-box {
+    width: max-content;
+    display: flex;
+    margin-left: 60px;
+    margin-top: 16px;
+    color: $bright-black;
+    font-weight: 700;
+    h1 {
+      font-size: 32px;
+      margin: 0;
     }
-    .price-box {
-      width: max-content;
-      display: flex;
-      margin-left: 60px;
-      margin-top: 16px;
-      color: $bright-black;
-      font-weight: 700;
-      h1 {
-        font-size: 32px;
-        margin: 0;
-      }
-      .price-3 {
-        font-size: 26px;
-      }
-      .price-3-span {
-        font-size: 20px;
-        font-weight: 400;
-      }
-      span {
-        margin-left: 5px;
-        font-size: 26px;
-      }
+    .price-3 {
+      font-size: 26px;
     }
-    .description {
-      color: $grey;
-      width: 70%;
-      margin-left: 80px;
-      font-size: 14px;
+    .price-3-span {
+      font-size: 20px;
       font-weight: 400;
     }
-    .text-primary {
-      color: $primary-color;
-    }
-    .mx-0 {
-      margin-left: 0;
-      margin-right: 0;
-    }
-    .ml-20 {
-      margin-left: 20px;
-    }
-    .w-80 {
-      width: 80%;
-    }
-    .keyandhand {
-      margin-top: 10px;
-    }
-    .pricing-3 {
-      color: $primary-color;
-      height: 100%;
-      width: 100%;
-      z-index: 3;
-      @include flex(column, flex-end, center);
-    }
-    .text-box-3 {
-      font-weight: 700;
-      h2 {
-        font-size: 48px;
-        margin: 0;
-      }
-      h1 {
-        font-size: 54px;
-        margin: 0;
-      }
+    span {
+      margin-left: 5px;
+      font-size: 26px;
     }
   }
-  .bg-secondary {
-    background-color: $secondary-color;
+  .description {
+    color: $grey;
+    width: 70%;
+    margin-left: 80px;
+    font-size: 14px;
+    font-weight: 400;
   }
-  .bg-purple {
-    background-color: $purple;
+  .text-primary {
+    color: $primary-color;
   }
+  .mx-0 {
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .ml-20 {
+    margin-left: 20px;
+  }
+  .w-80 {
+    width: 80%;
+  }
+  .keyandhand {
+    margin-top: 10px;
+  }
+  .pricing-3 {
+    color: $primary-color;
+    height: 100%;
+    width: 100%;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+  }
+  .text-box-3 {
+    font-weight: 700;
+    h2 {
+      font-size: 48px;
+      margin: 0;
+    }
+    h1 {
+      font-size: 54px;
+      margin: 0;
+    }
+  }
+}
+.bg-secondary {
+  background-color: $secondary-color;
+}
+.bg-purple {
+  background-color: $purple;
 }
 /*********section-5************/
 .section-5 {
@@ -497,31 +520,39 @@ ul span {
   img {
     width: 100%;
   }
-  .flex-item {
-    display: flex;
-    .text {
-      height: 84px;
-      @include flex(none, none, center);
-      width: 150px;
-      color: $black22;
-      font-size: 14px;
-      margin: 0;
-    }
+}
+.section5-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  justify-items: center;
+  height: auto;
+}
+.flex-item {
+  display: flex;
+}
+.text {
+  height: 84px;
+  display: flex;
+
+  align-items: center;
+  width: 150px;
+  color: $black22;
+  font-size: 14px;
+  margin: 0;
+}
+.number-box {
+  font-weight: 700;
+  margin-right: 20px;
+  h1 {
+    color: $secondary-color;
+    margin: 0;
+    font-size: 64px;
   }
-  .number-box {
-    font-weight: 700;
-    margin-right: 20px;
-    h1 {
-      color: $secondary-color;
-      margin: 0;
-      font-size: 64px;
-    }
-    p {
-      color: $secondary-color;
-      margin: 0;
-      font-size: 18px;
-      text-align: end;
-    }
+  p {
+    color: $secondary-color;
+    margin: 0;
+    font-size: 18px;
+    text-align: end;
   }
 }
 .pos-absolute {
@@ -544,7 +575,7 @@ ul span {
 .section-6 {
   display: flex;
   margin: 50px 0 0 0;
-  .left {
+  .contact-left {
     width: 50%;
     margin-left: 50px;
     h1 {
@@ -554,7 +585,7 @@ ul span {
       width: 90%;
     }
   }
-  .right {
+  .contact-right {
     flex: 0.5;
     right: 0;
     top: -140px;
@@ -564,7 +595,10 @@ ul span {
 /********section-7********/
 .section-7 {
   height: 200px;
-  @include flex(none, space-between, center);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
   h2 {
     font-size: 36px;
     word-wrap: break-word;
@@ -572,76 +606,313 @@ ul span {
     font-weight: 700;
     width: 200px;
   }
-  .logos {
-    @include flex(none, space-between, center);
-    img {
-      margin-left: 50px;
-    }
+}
+.logos {
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  img {
+    height: 60px;
+    margin: 30px;
   }
 }
 /***********footer***********/
 footer {
   background-color: $black1f;
   color: $primary-color;
-  .top {
-    padding: 30px 50px;
-    width: 100%;
+}
+.top {
+  padding: 30px 50px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1.8fr 1fr 0.5fr 1.2fr;
+  grid-gap: 16px;
+  border-bottom: 1px solid $primary-color;
+}
+.first {
+  width: 80%;
+  .logo-title {
+    margin-left: 16px;
+    font-family: "Bitter", sans-serif;
+    font-weight: 400;
+    font-size: 24px;
+    text-transform: uppercase;
+  }
+  p {
+    font-size: 14px;
+    color: $footer-text;
+  }
+}
+.footer-list {
+  .title {
+    color: $primary-color;
+    opacity: 0.4;
+    margin: 0;
+  }
+  .border-bottom {
+    height: 2px;
+    background-color: $primary-color;
+    opacity: 0.4;
+    margin-top: 8px;
+    width: 40px;
+  }
+  ul {
     display: grid;
-    grid-template-columns: 1.8fr 1fr 0.5fr 1.2fr;
     grid-gap: 16px;
-    border-bottom: 1px solid $primary-color;
+    margin-right: 16px;
+    img {
+      height: max-content;
+      margin-right: 10px;
+    }
   }
-  .first {
-    width: 80%;
-    .logo-title{
+  li {
+    display: flex;
+    align-items: center;
+  }
+}
+.bottom {
+  height: 70px;
+  padding: 0 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  .right {
+    img {
       margin-left: 16px;
-      font-family: "Bitter", sans-serif;
-      font-weight: 400;
-      font-size: 24px;
-      text-transform: uppercase;
-    }
-    p{
-      font-size: 14px;
-      color: $footer-text
     }
   }
-  .footer-list{
-    .title{
-      color: $primary-color;
-      opacity: 0.4;
-      margin: 0
-    }
-    .border-bottom{
-      height: 2px;
-      background-color: $primary-color;
-      opacity: 0.4;
-      margin-top: 8px;
-      width: 40px;
-    }
-    ul{
-      display: grid;
-      grid-gap: 16px;
-      margin-right: 16px;
-      img{
-        height: max-content;
-        margin-right: 10px;
-      }
-    }
-    li{
-      @include flex(none, none, center)
+  .left {
+    font-size: 14px;
+    align-items: center;
+  }
+  .copyright {
+    height: 37px;
+    width: 37px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid $primary-color;
+    margin-right: 16px;
+  }
+}
+.logo-title {
+  align-self: center;
+}
+/***************media quereis***************/
+@media screen and (max-width: 1200px) {
+  .logos img {
+    height: 40px;
+  }
+  .top {
+    grid-template-columns: 1.8fr 1fr;
+    grid-gap: 8px;
+  }
+  section {
+    margin: 16px;
+  }
+  .section-2 {
+    margin: 120px 16px;
+  }
+  .container {
+    margin: 0 16px;
+  }
+  .px-50 {
+    margin-right: 16px;
+    padding-left: 16px;
+  }
+  .contact-left {
+    flex: 0.5;
+  }
+  .contact-right {
+    height: 100%;
+    top: 0;
+  }
+  .icon {
+    height: 60px;
+  }
+  .btn-lg-100 {
+    width: 100%;
+  }
+  .pricing-box {
+    grid-gap: 8px;
+  }
+  .section5-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .section-5 {
+    height: 550px;
+  }
+}
+@media screen and (max-width: 992px) {
+  .contact-right {
+    display: none;
+  }
+  .section-6 {
+    .contact-left {
+      width: 90%;
+      margin: 16px;
     }
   }
-  .bottom{
-    height: 80px;
-    padding: 0 50px;
-    @include flex(none, space-between, center);
-    .right{
-      img{
-        margin-left: 16px;
+  input {
+    padding: 12px 8px;
+  }
+  .section-2 {
+    flex-direction: column;
+    margin-top: 50px;
+  }
+  .left-side {
+    margin: 0 0 50px 0;
+    width: 80%;
+    h1,
+    p {
+      text-align: center;
+    }
+  }
+  .right-side {
+    .box {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+    }
+  }
+  .big-project {
+    display: none;
+  }
+  .mobile-big-project {
+    display: block;
+  }
+  .projects {
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 8px;
+  }
+  .project {
+    height: auto;
+    aspect-ratio: 16 / 9;
+  }
+  header {
+    height: auto;
+    min-height: 10px;
+  }
+  .direction-box {
+    display: none;
+  }
+  .logo {
+    width: 30%;
+  }
+  .pricing-box {
+    height: auto;
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+  }
+  .section-7 {
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    height: auto;
+    h2 {
+      font-size: 36px;
+    }
+  }
+  .logos {
+    flex-wrap: wrap;
+    img {
+      margin: 8px;
+    }
+  }
+}
+@media screen and (max-width: 768px) {
+  .projects-header {
+    flex-direction: column;
+  }
+  .top {
+    grid-template-columns: 1fr;
+    padding: 16px;
+  }
+  .bottom {
+    height: auto;
+    flex-direction: column;
+    padding: 16px;
+  }
+  .pricing-box {
+    grid-template-columns: 1fr;
+  }
+  .text {
+    height: 62px;
+    font-size: 14px;
+  }
+  .number-box {
+    margin-right: 10px;
+    h1 {
+      font-size: 54px;
+    }
+    p {
+      font-size: 16px;
+      text-align: start;
+    }
+  }
+  .flex-item {
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .section-5 {
+    height: 450px;
+  }
+  .flex-mobile {
+    flex-direction: column;
+  }
+  input {
+    margin-bottom: 8px;
+    width: 100%;
+  }
+  .btn-m-100 {
+    width: 100%;
+  }
+  h1 {
+    font-size: 44px;
+  }
+  .left-side {
+    width: 100%;
+    h1 {
+      font-size: 44px;
+    }
+  }
+  .op-text-box {
+    height: 180px;
+    h1 {
+      margin-top: 50px;
+      font-size: 44px;
+    }
+    p {
+      font-size: 12px;
+    }
+  }
+  .section-2 {
+    margin-bottom: 50px;
+  }
+  .right-side {
+    .box {
+      padding: 16px;
+      height: 300px;
+      p {
+        font-size: 10px;
       }
     }
-    .left{
-      font-size: 14px;
+  }
+  .icon {
+    height: 40px;
+    margin-right: 8px;
+  }
+  .projects {
+    grid-template-columns: 1fr;
+  }
+  .section-6 {
+    .contact-left {
+      width: 100%;
+      margin: 16px;
     }
   }
 }
