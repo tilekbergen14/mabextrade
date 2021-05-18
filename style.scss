@@ -1,0 +1,647 @@
+@import url("https://fonts.googleapis.com/css2?family=Bitter:wght@400;700;&family=Exo+2:wght@400;600;700&display=swap");
+
+* {
+  box-sizing: border-box;
+}
+
+$primary-color: #ffffff;
+$secondary-color: #007be9;
+$black: #000000;
+$black22: #222222;
+$bright-black: #303030;
+$black1f: #1f1f1f;
+$grey: #444444;
+$footer-text: #BDBDBD;
+$status-bg: #55597d;
+$red: #c21010;
+$yellow: #eedb4d;
+$purple: #9b9ff1;
+
+body {
+  padding: 0;
+  margin: 0;
+  overflow-x: hidden;
+  font-family: "Exo 2", sans-serif;
+}
+
+/**********mixins***********/
+
+@mixin position($position, $zindex) {
+  position: $position;
+  z-index: $zindex;
+}
+
+@mixin flex($direction, $justify, $align) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+}
+/*********** header styles **************/
+
+header {
+  height: 100vh;
+  min-height: 500px;
+  position: relative;
+}
+.bg-image {
+  height: 100%;
+  width: 100%;
+}
+header .logo {
+  position: absolute;
+  z-index: 3;
+  height: 300px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+.shadow {
+  background-color: $black;
+  @include position(absolute, 2);
+  opacity: 0.4;
+  width: 100%;
+  height: 100%;
+}
+
+.direction-box {
+  bottom: 20px;
+  left: 50%;
+  color: $primary-color;
+  transform: translateX(-50%);
+  @include position(absolute, 3);
+  @include flex(column, none, center);
+}
+.direction-text {
+  text-transform: uppercase;
+  font-weight: 400;
+}
+
+/********* main-section **********/
+section {
+  margin: 0 50px;
+}
+.op-text-box {
+  @include flex(column, none, center);
+  height: 300px;
+}
+.op-text-box h1 {
+  margin: 110px 0 0 0;
+  font-size: 54px;
+  font-weight: 700;
+  font-family: "Bitter", serif;
+}
+.op-text-box p {
+  text-transform: uppercase;
+  font-size: 20px;
+  font-weight: 400;
+  color: $grey;
+  line-height: 34px;
+}
+.projects-header {
+  padding: 20px 0;
+  @include flex(none, space-between, center);
+}
+ul {
+  display: flex;
+  padding: 0;
+  font-weight: 400;
+  list-style: none;
+}
+
+ul span {
+  color: rgb(212, 211, 211);
+  margin: 0 10px;
+}
+.active {
+  color: $secondary-color;
+  font-weight: 700;
+}
+
+.btn-outlined {
+  border: 2px solid $secondary-color;
+  background-color: transparent;
+  color: $secondary-color;
+}
+.btn {
+  outline: none;
+  padding: 12px 64px;
+  border-radius: 4px;
+  width: max-content;
+  font-weight: 700;
+}
+.btn-fill {
+  background-color: $secondary-color;
+  color: $primary-color;
+  border: none;
+}
+.projects {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 16px;
+}
+.project {
+  width: 100%;
+  height: 250px;
+  position: relative;
+}
+.hover {
+  background-color: $secondary-color;
+  @include position(absolute, 1);
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  &:hover {
+    opacity: 0.5;
+  }
+}
+.big-project {
+  width: 100%;
+  position: relative;
+  grid-column-start: 1;
+  grid-column-end: 3;
+  grid-row-start: 1;
+  grid-row-end: 3;
+  grid-auto-flow: column;
+  height: 516px;
+}
+
+.projects img {
+  filter: brightness(0.7);
+  width: 100%;
+  height: 100%;
+}
+
+.status-box {
+  @include position(absolute, 1);
+  top: 30px;
+  pointer-events: none;
+}
+
+.big-project .status {
+  width: max-content;
+  color: $primary-color;
+  padding: 4px 32px;
+  font-weight: 700px;
+  font-size: 20px;
+  text-transform: uppercase;
+  background-color: $status-bg;
+}
+.big-project .status1 {
+  background-color: $red;
+}
+.big-project .name {
+  color: $primary-color;
+  font-weight: 700;
+  font-size: 24px;
+  text-transform: uppercase;
+}
+.big-project .footer-box {
+  pointer-events: none;
+  @include position(relative, 1);
+  bottom: 150px;
+  left: 0;
+  margin-left: 16px;
+}
+.big-project .info {
+  color: $primary-color;
+  font-weight: 400;
+  font-size: 12px;
+}
+.big-project .border-bt {
+  height: 2px;
+  margin-top: 8px;
+  background-color: $primary-color;
+  width: 80px;
+}
+
+.project .status {
+  pointer-events: none;
+  @include position(absolute, 2);
+  left: 0;
+  color: $primary-color;
+  padding: 4px 32px;
+  text-transform: uppercase;
+  top: 30px;
+  background-color: $status-bg;
+}
+.project .name {
+  pointer-events: none;
+  @include position(absolute, 2);
+  left: 0;
+  color: $primary-color;
+  margin-left: 16px;
+  font-weight: 700;
+  text-transform: uppercase;
+  bottom: 10px;
+}
+.border-bt {
+  pointer-events: none;
+  @include position(absolute, 2);
+  height: 2px;
+  background-color: $primary-color;
+  width: 40px;
+  left: 0;
+  top: 26px;
+}
+/**********section 2*************/
+.section-2 {
+  @include flex(none, none, center);
+  margin: 120px 50px;
+}
+.left-side {
+  flex: 1;
+}
+.right-side {
+  position: relative;
+  flex: 2;
+  @include flex(none, center, none);
+  .icon {
+    margin-right: 20px;
+  }
+  .icon-text {
+    font-size: 14px;
+    font-weight: 600;
+  }
+  .left {
+    margin-top: 50px;
+  }
+  .box {
+    background-color: $secondary-color;
+    width: 50%;
+    @include flex(column, space-between, none);
+    padding: 50px;
+    color: $primary-color;
+    height: 450px;
+  }
+  .right {
+    margin-bottom: 50px;
+  }
+}
+.flex {
+  @include flex(none, none, none);
+}
+.snowy-effect {
+  position: absolute;
+}
+.left-side {
+  margin-right: 30px;
+  h1 {
+    font-size: 54px;
+    margin: 0;
+    font-family: "Bitter", serif;
+  }
+  p {
+    font-weight: 400;
+    color: $grey;
+  }
+}
+/*************** section 3 ************/
+.section-3 {
+  margin: 0 0 100px 0;
+  height: 350px;
+  position: relative;
+  display: flex;
+
+  .px-50 {
+    padding: 0 50px;
+  }
+  .placeholder {
+    height: 100%;
+    position: absolute;
+    width: 100%;
+  }
+  .placeholder-shadow {
+    height: 100%;
+    width: 100%;
+    @include position(absolute, 3);
+    background-color: $black;
+    opacity: 0.6;
+  }
+  .left {
+    flex: 0.6;
+    height: 100%;
+    @include flex(column, center, none);
+    @include position(absolute, 4);
+    color: $primary-color;
+    p {
+      font-size: 14px;
+    }
+  }
+  .right {
+    flex: 0.4;
+    @include position(absolute, 4);
+    right: 5%;
+    top: -90px;
+  }
+  h1 {
+    font-size: 54px;
+    font-family: "Bitter", sans-serif;
+    margin: 0;
+  }
+  input {
+    outline: none;
+    border: none;
+    padding: 12px 64px;
+    border-radius: 4px;
+    width: 25%;
+    margin-right: 10px;
+  }
+}
+/**********section 4*************/
+.section-4 {
+  @include flex(column, none, center);
+  .pricing-box {
+    width: 100%;
+    height: 260px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 16px;
+  }
+  .pricing {
+    background-color: $yellow;
+    position: relative;
+    img {
+      position: absolute;
+      z-index: 2;
+    }
+    .text-box-2 {
+      margin-left: 20px;
+      color: $yellow;
+      display: flex;
+      div {
+        display: flex;
+        width: max-content;
+        position: relative;
+      }
+      h1 {
+        font-size: 116px;
+        margin: 0;
+      }
+      img {
+        left: 50%;
+        transform: translateX(-50%);
+      }
+      span {
+        font-size: 48px;
+        margin: 0;
+      }
+    }
+    .pos-absolute {
+      position: absolute;
+      z-index: 1;
+    }
+    .pricing1-text {
+      height: 100%;
+      @include flex(column, flex-end, none);
+      top: 0;
+      right: 0;
+      width: 75%;
+    }
+    .text-box {
+      background-color: $bright-black;
+      width: max-content;
+      color: $primary-color;
+      display: flex;
+      color: $yellow;
+      font-weight: 700;
+      padding-left: 40px;
+      h1 {
+        font-size: 54px;
+        margin: 0;
+      }
+      .asterik {
+        margin: 0 5px 0 0;
+        font-size: 24px;
+        font-weight: 200;
+      }
+    }
+    .price-box {
+      width: max-content;
+      display: flex;
+      margin-left: 60px;
+      margin-top: 16px;
+      color: $bright-black;
+      font-weight: 700;
+      h1 {
+        font-size: 32px;
+        margin: 0;
+      }
+      .price-3 {
+        font-size: 26px;
+      }
+      .price-3-span {
+        font-size: 20px;
+        font-weight: 400;
+      }
+      span {
+        margin-left: 5px;
+        font-size: 26px;
+      }
+    }
+    .description {
+      color: $grey;
+      width: 70%;
+      margin-left: 80px;
+      font-size: 14px;
+      font-weight: 400;
+    }
+    .text-primary {
+      color: $primary-color;
+    }
+    .mx-0 {
+      margin-left: 0;
+      margin-right: 0;
+    }
+    .ml-20 {
+      margin-left: 20px;
+    }
+    .w-80 {
+      width: 80%;
+    }
+    .keyandhand {
+      margin-top: 10px;
+    }
+    .pricing-3 {
+      color: $primary-color;
+      height: 100%;
+      width: 100%;
+      z-index: 3;
+      @include flex(column, flex-end, center);
+    }
+    .text-box-3 {
+      font-weight: 700;
+      h2 {
+        font-size: 48px;
+        margin: 0;
+      }
+      h1 {
+        font-size: 54px;
+        margin: 0;
+      }
+    }
+  }
+  .bg-secondary {
+    background-color: $secondary-color;
+  }
+  .bg-purple {
+    background-color: $purple;
+  }
+}
+/*********section-5************/
+.section-5 {
+  position: relative;
+  margin: 0;
+  height: 450px;
+  img {
+    width: 100%;
+  }
+  .flex-item {
+    display: flex;
+    .text {
+      height: 84px;
+      @include flex(none, none, center);
+      width: 150px;
+      color: $black22;
+      font-size: 14px;
+      margin: 0;
+    }
+  }
+  .number-box {
+    font-weight: 700;
+    margin-right: 20px;
+    h1 {
+      color: $secondary-color;
+      margin: 0;
+      font-size: 64px;
+    }
+    p {
+      color: $secondary-color;
+      margin: 0;
+      font-size: 18px;
+      text-align: end;
+    }
+  }
+}
+.pos-absolute {
+  position: absolute;
+}
+.top-0 {
+  top: 0;
+}
+.w-100 {
+  width: 100%;
+}
+
+.space-between {
+  justify-content: space-between;
+}
+.container {
+  margin: 0 50px;
+}
+/********section-6*******/
+.section-6 {
+  display: flex;
+  margin: 50px 0 0 0;
+  .left {
+    width: 50%;
+    margin-left: 50px;
+    h1 {
+      width: 90%;
+    }
+    p {
+      width: 90%;
+    }
+  }
+  .right {
+    flex: 0.5;
+    right: 0;
+    top: -140px;
+  }
+}
+
+/********section-7********/
+.section-7 {
+  height: 200px;
+  @include flex(none, space-between, center);
+  h2 {
+    font-size: 36px;
+    word-wrap: break-word;
+    font-family: "Bitter", sans-serif;
+    font-weight: 700;
+    width: 200px;
+  }
+  .logos {
+    @include flex(none, space-between, center);
+    img {
+      margin-left: 50px;
+    }
+  }
+}
+/***********footer***********/
+footer {
+  background-color: $black1f;
+  color: $primary-color;
+  .top {
+    padding: 30px 50px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1.8fr 1fr 0.5fr 1.2fr;
+    grid-gap: 16px;
+    border-bottom: 1px solid $primary-color;
+  }
+  .first {
+    width: 80%;
+    .logo-title{
+      margin-left: 16px;
+      font-family: "Bitter", sans-serif;
+      font-weight: 400;
+      font-size: 24px;
+      text-transform: uppercase;
+    }
+    p{
+      font-size: 14px;
+      color: $footer-text
+    }
+  }
+  .footer-list{
+    .title{
+      color: $primary-color;
+      opacity: 0.4;
+      margin: 0
+    }
+    .border-bottom{
+      height: 2px;
+      background-color: $primary-color;
+      opacity: 0.4;
+      margin-top: 8px;
+      width: 40px;
+    }
+    ul{
+      display: grid;
+      grid-gap: 16px;
+      margin-right: 16px;
+      img{
+        height: max-content;
+        margin-right: 10px;
+      }
+    }
+    li{
+      @include flex(none, none, center)
+    }
+  }
+  .bottom{
+    height: 80px;
+    padding: 0 50px;
+    @include flex(none, space-between, center);
+    .right{
+      img{
+        margin-left: 16px;
+      }
+    }
+    .left{
+      font-size: 14px;
+    }
+  }
+}
