@@ -292,6 +292,7 @@ ul span {
 }
 .snowy-effect {
   position: absolute;
+  width: 100%;
 }
 .left-side {
   flex: 1;
@@ -750,7 +751,7 @@ footer {
   }
   .section-6 {
     .contact-left {
-      width: 90%;
+      width: 50%;
       margin: 16px;
     }
   }
@@ -909,10 +910,12 @@ footer {
   .projects {
     grid-template-columns: 1fr;
   }
+  .fs-36 {
+    font-size: 36px !important;
+  }
   .section-6 {
     .contact-left {
-      width: 100%;
-      margin: 16px;
+      width: 90%;
     }
   }
 }

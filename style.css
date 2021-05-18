@@ -11,6 +11,7 @@ body {
   font-family: "Exo 2", sans-serif;
 }
 
+/**********mixins***********/
 /*********** header styles **************/
 header {
   height: 100vh;
@@ -367,6 +368,7 @@ ul span {
 
 .snowy-effect {
   position: absolute;
+  width: 100%;
 }
 
 .left-side {
@@ -867,7 +869,7 @@ footer {
 
 .first p {
   font-size: 14px;
-  color: #BDBDBD;
+  color: #bdbdbd;
 }
 
 .footer-list .title {
@@ -1010,7 +1012,7 @@ footer {
     display: none;
   }
   .section-6 .contact-left {
-    width: 90%;
+    width: 50%;
     margin: 16px;
   }
   input {
@@ -1027,7 +1029,8 @@ footer {
     margin: 0 0 50px 0;
     width: 80%;
   }
-  .left-side h1, .left-side p {
+  .left-side h1,
+  .left-side p {
     text-align: center;
   }
   .right-side .box {
@@ -1196,9 +1199,11 @@ footer {
     -ms-grid-columns: 1fr;
         grid-template-columns: 1fr;
   }
+  .fs-36 {
+    font-size: 36px !important;
+  }
   .section-6 .contact-left {
-    width: 100%;
-    margin: 16px;
+    width: 90%;
   }
 }
 /*# sourceMappingURL=style.css.map */
